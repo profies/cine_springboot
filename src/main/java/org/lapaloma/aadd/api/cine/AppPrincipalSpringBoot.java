@@ -1,6 +1,5 @@
 package org.lapaloma.aadd.api.cine;
 
-import org.lapaloma.aadd.api.cine.controller.Prueba;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
