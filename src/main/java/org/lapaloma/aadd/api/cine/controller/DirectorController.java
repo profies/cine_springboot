@@ -38,4 +38,29 @@ public class DirectorController {
     	//)
     	directorService.borrarEntidad(director);
     }
+    
+    @PostMapping("/students")
+    public ResponseEntity<Object> createStudent(@RequestBody Student student) {
+    	Student savedStudent = studentRepository.save(student);
+
+    	URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+    			.buildAndExpand(savedStudent.getId()).toUri();
+
+    	return ResponseEntity.created(location).build();
+
+    }
+    @PutMapping("/students/{id}")
+    public ResponseEntity<Object> updateStudent(@RequestBody Student student, @PathVariable long id) {
+
+    	Optional<Student> studentOptional = studentRepository.findById(id);
+
+    	if (studentOptional.isEmpty())
+    		return ResponseEntity.notFound().build();
+
+    	student.setId(id);
+    	
+    	studentRepository.save(student);
+
+    	return ResponseEntity.noContent().build();
+    }
 }
