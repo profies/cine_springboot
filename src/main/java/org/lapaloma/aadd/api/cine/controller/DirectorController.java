@@ -32,7 +32,10 @@ public class DirectorController {
     
     
     @DeleteMapping("/director/{id}")
-    public void deleteStudent(@PathVariable long id) {
-    	directorService.borrarEntidad(null);
+    public void borrarDirector(@PathVariable int id) {
+    	Director director = new Director();
+    	director.setIdentificador(id);
+    	//)
+    	directorService.borrarEntidad(director);
     }
 }
